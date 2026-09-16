@@ -1,0 +1,2 @@
+# Infrared_Sauna_Detox_Wellness_Studio
+Automated website repository for Infrared_Sauna_Detox_Wellness_Studio
