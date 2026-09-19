@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMORA WELLNESS | Experience</title>
+  <meta name="description" content="More than a sauna session. Discover the Lumora wellness experience.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .exp-hero {
+      position: relative; min-height: 60vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      background-color: var(--bg-secondary);
+    }
+    
+    .story-section { padding: var(--spacing-xl) 5%; }
+    
+    .story-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+      min-height: 50vh;
+    }
+    .story-row:nth-child(even) { flex-direction: row-reverse; }
+    
+    .story-image {
+      flex: 1; position: relative;
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .story-content { flex: 1; }
+    .story-content .step {
+      font-family: var(--font-heading);
+      font-size: 1.5rem; color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .interactive-path {
+      background-color: var(--bg-secondary);
+      padding: var(--spacing-xl) 5%;
+      text-align: center;
+    }
+    .interactive-path .container {
+      background-color: var(--bg-primary);
+      padding: 4rem 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .path-buttons {
+      display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;
+    }
+    .path-btn {
+      padding: 1rem 2rem; border: 1px solid var(--text-primary);
+      background: transparent; color: var(--text-primary);
+      cursor: pointer; transition: all 0.3s; font-family: var(--font-heading); font-size: 1.25rem;
+    }
+    .path-btn.active, .path-btn:hover { background: var(--text-primary); color: var(--bg-primary); }
+
+    .path-result {
+      max-width: 600px; margin: 0 auto;
+      opacity: 0; transform: translateY(20px); transition: all 0.5s ease;
+    }
+    .path-result.show { opacity: 1; transform: translateY(0); }
+
+    /* Advanced Cinematic Card for Steps 03 & 04 */
+    .experience-advanced-card {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--spacing-xl);
+      height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      box-shadow: var(--shadow-lg);
+    }
+    .experience-advanced-card img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .experience-advanced-card:hover img {
+      transform: scale(1.05);
+    }
+    .experience-advanced-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 60%);
+      z-index: 2;
+    }
+    .experience-advanced-content {
+      position: relative;
+      z-index: 3;
+      padding: 4rem;
+      color: #fff;
+      max-width: 800px;
+    }
+    .experience-advanced-content .step {
+      color: var(--accent);
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .experience-advanced-content h2 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .experience-advanced-content p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .story-row, .story-row:nth-child(even) { flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+      .experience-advanced-card { height: auto; min-height: 60vh; }
+      .experience-advanced-content { padding: 2rem; }
+      .path-buttons { flex-direction: column; }
+      .path-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <div class="nav-brand">
+      <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+      <span style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+      <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Login</a>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <button class="close-menu">&times;</button>
+    <ul class="nav-links" style="display: flex;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+
+    <div class="mobile-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+    </div>
+    <div class="mobile-cta">
+      <a href="login.html" class="btn btn-outline">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="exp-hero">
+      <div class="container fade-up">
+        <h1 style="color: var(--text-primary);">More Than a Sauna Session</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">A guided journey designed to help you detach from the outside world and reconnect with yourself.</p>
+      </div>
+    </section>
+
+    <section class="story-section container">
+      <div class="story-row fade-up">
+        <div class="story-image">
+          <img src="assets/images/Leave%20the%20Noise%20Behind.png" alt="Preparation">
+        </div>
+        <div class="story-content">
+          <div class="step">01. Prepare</div>
+          <h2>Leave the Noise Behind</h2>
+          <p>Your journey begins the moment you enter our doors. We offer a dedicated preparation space equipped with premium amenities, soft lighting, and calming acoustics to help you detach from your day before your session even begins.</p>
+        </div>
+      </div>
+
+      <div class="story-row fade-up">
+        <div class="story-image">
+          <img src="assets/images/Embrace%20the%20Heat.png" alt="Warm">
+        </div>
+        <div class="story-content">
+          <div class="step">02. Warm</div>
+          <h2>Embrace the Heat</h2>
+          <p>Step into your private, pre-warmed environment. Whether it's the deep penetrating heat of infrared or the cellular activation of red light, this is your time to sweat, breathe, and let the warmth do its work.</p>
+        </div>
+      </div>
+
+      <!-- 03. Restore (Advanced Layout) -->
+      <div class="experience-advanced-card fade-up">
+        <img src="assets/images/Find%20Your%20Baseline.png" alt="Restore">
+        <div class="experience-advanced-content">
+          <div class="step">03. Restore</div>
+          <h2>Find Your Baseline</h2>
+          <p>As the session progresses, your core temperature rises, promoting circulation and deep relaxation. This is the peak of the restorative process, allowing tension to melt away.</p>
+        </div>
+      </div>
+
+      <!-- 04. Relax (Advanced Layout) -->
+      <div class="experience-advanced-card fade-up">
+        <img src="assets/images/Integrate%20the%20Calm.png" alt="Relax">
+        <div class="experience-advanced-content">
+          <div class="step">04. Relax</div>
+          <h2>Integrate the Calm</h2>
+          <p>After your session, don't rush back into the world. Our recovery lounge offers a space to rehydrate with infused waters, cool down naturally, and track your wellness progress.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="interactive-path">
+      <div class="container fade-up">
+        <h2>What Do You Need Today?</h2>
+        <div class="path-buttons">
+          <button class="path-btn active" data-path="Relax">Relax</button>
+          <button class="path-btn" data-path="Recover">Recover</button>
+          <button class="path-btn" data-path="Reset">Reset</button>
+          <button class="path-btn" data-path="Recharge">Recharge</button>
+        </div>
+
+        <div class="path-result show" id="path-result">
+          <h3 class="accent-text" style="font-size: 2rem;">The Relaxation Journey</h3>
+          <p>A gentle 45-minute infrared sauna session at 130°F, followed by 15 minutes in our meditation corner with herbal tea. Designed to calm the nervous system.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Snippet -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
+          </div>
+          <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
+          <p style="font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-muted);">
+            Experience the transformative power of infrared heat. Detoxify, relax, and rejuvenate in our premium wellness studio.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="experience.html">Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Membership</h4>
+          <ul>
+            <li><a href="membership.html">Membership Plans</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="experience.html">Wellness Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <form style="display: flex; flex-direction: column; gap: 0.75rem;" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email" required style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-primary); font-family: inherit; width: 100%; box-sizing: border-box;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.75rem; width: 100%; box-sizing: border-box;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Lumora Wellness Studio. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/interactions.js"></script>
+  <script>
+    const pathBtns = document.querySelectorAll('.path-btn');
+    const pathResult = document.getElementById('path-result');
+    const pathsData = {
+      'Relax': { title: 'The Relaxation Journey', desc: 'A gentle 45-minute infrared sauna session at 130°F, followed by 15 minutes in our meditation corner with herbal tea. Designed to calm the nervous system.' },
+      'Recover': { title: 'The Recovery Journey', desc: 'Targeted red light therapy combined with a deep heat sauna session. Perfect for soothing sore muscles and reducing inflammation post-workout.' },
+      'Reset': { title: 'The Deep Reset Journey', desc: 'A 60-minute detox wrap in a completely silent, warm environment. Designed to pull out impurities and hit the reset button on your week.' },
+      'Recharge': { title: 'The Recharge Journey', desc: 'A quick 30-minute hot infrared session designed to energize and boost circulation before a busy day.' }
+    };
+
+    pathBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        pathBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const data = pathsData[btn.dataset.path];
+        
+        pathResult.classList.remove('show');
+        setTimeout(() => {
+          pathResult.innerHTML = `
+            <h3 class="accent-text" style="font-size: 2rem;">${data.title}</h3>
+            <p>${data.desc}</p>
+          `;
+          pathResult.classList.add('show');
+        }, 300);
+      });
+    });
+  </script>
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>

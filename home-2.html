@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMORA WELLNESS | Home 2</title>
+  <meta name="description" content="A Warmer Way to Feel Better. Discover the science of infrared wellness.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Home 2 Specific Styles */
+
+    /* Immersive Hero (Split Screen) */
+    .hero-split {
+      display: flex;
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .hero-split-content {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10% 5%;
+      background-color: var(--bg-primary);
+    }
+
+    .hero-split-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-split-image img {
+      width: 200%;
+      max-width: none;
+      height: 100%;
+      object-fit: cover;
+      object-position: left center;
+    }
+
+    .heat-viz {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(217, 119, 87, 0.4), transparent);
+      mix-blend-mode: overlay;
+      animation: heatShimmer 5s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes heatShimmer {
+      0% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0.7;
+        transform: scale(1.05);
+      }
+    }
+
+    /* Science of Warmth */
+    .science-section {
+      background-color: var(--bg-secondary);
+      padding: var(--spacing-xl) 5%;
+    }
+
+    .science-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      align-items: center;
+    }
+
+    .science-diagram {
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      aspect-ratio: 1;
+      border: 1px solid var(--border);
+    }
+
+    .science-diagram img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Session Types (Bento-ish) */
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--spacing-lg);
+    }
+
+    .session-card {
+      position: relative;
+      height: 450px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--spacing-md);
+      color: #fff;
+    }
+
+    .session-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transition: transform var(--transition-slow);
+    }
+
+    .session-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .session-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+    }
+
+    /* Studio Environment Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 300px;
+      gap: 1rem;
+      margin-top: var(--spacing-lg);
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    /* Member Progress */
+    .progress-dashboard {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: var(--spacing-md);
+    }
+
+    .stat-card {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Login Experience */
+    .inline-login {
+      display: flex;
+      min-height: 80vh;
+      background-color: var(--bg-tertiary);
+    }
+
+    .login-form-container {
+      flex: 1;
+      padding: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 1024px) {
+      .sessions-grid {
+        grid-template-columns: 1fr;
+        padding: 0 5%;
+      }
+      
+      .hero-split {
+        flex-direction: column;
+      }
+
+      .hero-split-image {
+        min-height: 400px;
+      }
+
+      .hero-split-content {
+        align-items: center;
+        text-align: center;
+        padding-top: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .science-grid,
+      .sessions-grid {
+        grid-template-columns: 1fr;
+        padding: 0 5%;
+      }
+
+      .split-card {
+        flex-direction: column;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 250px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      .gallery-item:nth-child(4) {
+        grid-column: span 1;
+      }
+
+      .inline-login {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 575px) {
+      .science-grid,
+      .sessions-grid {
+        grid-template-columns: 1fr;
+      }
+      .science-grid > :nth-child(3),
+      .sessions-grid > :nth-child(3) {
+        grid-column: auto;
+        justify-self: stretch;
+        width: 100%;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+      }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Global Navbar -->
+  <nav class="navbar scrolled"> <!-- Default scrolled for non-hero overlay -->
+    <div class="nav-brand">
+      <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+      <span
+        style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html" class="active">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 3l4 4-4 4" />
+          <path d="M3 7h18" />
+          <path d="M7 21l-4-4 4-4" />
+          <path d="M21 17H3" />
+        </svg>
+      </button>
+      <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Login</a>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <button class="close-menu">&times;</button>
+    <ul class="nav-links" style="display: flex;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html" class="active">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+
+    <div class="mobile-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+    </div>
+    <div class="mobile-cta">
+      <a href="login.html" class="btn btn-outline">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section 01: Split Hero -->
+    <section class="hero-split">
+      <div class="hero-split-content fade-up">
+        <h1 style="font-size: clamp(3rem, 5vw, 4.5rem);">A Warmer Way to Feel Better</h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; max-width: 500px;">Elevate your wellness routine with
+          science-backed infrared technology and premium hospitality.</p>
+        <div>
+          <a href="services.html" class="btn btn-primary">Discover Sessions</a>
+        </div>
+      </div>
+      <div class="hero-split-image">
+        <img src="assets/images/generated/home2_hero_sauna.jpg" alt="Alternative Sauna Hero">
+        <div class="heat-viz"></div>
+      </div>
+    </section>
+
+    <!-- Section 02: Science of Warmth -->
+    <section class="science-section">
+      <div class="container science-grid">
+        <div class="science-diagram fade-up">
+          <img src="assets/images/The%20Science%20of%20Warmth.png" alt="Science of Warmth">
+        </div>
+        <div class="fade-up">
+          <h2>The Science of Warmth</h2>
+          <p>Infrared heat penetrates deeply into the body, promoting a profound sweat at lower, more comfortable
+            temperatures. This controlled environment allows for longer, more effective sessions.</p>
+          <ul style="list-style: none; margin-top: 2rem;">
+            <li style="margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+              <h4 style="color: var(--accent);">Cellular Rejuvenation</h4>
+              <p style="font-size: 0.9rem;">Red light and near-infrared wavelengths stimulate cellular energy
+                production.</p>
+            </li>
+            <li style="margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+              <h4 style="color: var(--accent);">Deep Tissue Warmth</h4>
+              <p style="font-size: 0.9rem;">Far-infrared heat penetrates up to 1.5 inches to soothe muscles and joints.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: Session Types -->
+    <section class="section-padding container">
+      <div class="text-center fade-up">
+        <h2>Curated Session Types</h2>
+        <p>Personalized environments for your specific wellness goals.</p>
+      </div>
+
+      <div class="sessions-grid">
+        <div class="session-card fade-up">
+          <img src="assets/images/generated/home2_session_restore.jpg" alt="Restore Session" loading="lazy">
+          <div class="overlay"></div>
+          <h3 style="color: #fff; z-index: 1;">Restore Session</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); z-index: 1;">Gentle heat, soft ambient light, and natural acoustics for deep rest.</p>
+        </div>
+        <div class="session-card fade-up">
+          <img src="assets/images/generated/home2_session_recover.jpg" alt="Recovery Session" loading="lazy">
+          <div class="overlay"></div>
+          <h3 style="color: #fff; z-index: 1;">Recovery Session</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); z-index: 1;">Targeted red light therapy combined with intense infrared warmth.</p>
+        </div>
+        <div class="session-card fade-up">
+          <img src="assets/images/generated/home_benefit_mindful.jpg" alt="Deep Reset Session" loading="lazy">
+          <div class="overlay"></div>
+          <h3 style="color: #fff; z-index: 1;">Deep Reset Session</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); z-index: 1;">A guided meditation experience within a warm, isolated environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 04: Studio Environment Gallery -->
+    <section class="section-padding container">
+      <div class="text-center fade-up">
+        <h2>Studio Environment</h2>
+        <p>A sanctuary designed for your comfort.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item fade-up">
+          <img src="assets/images/Sauna.png" alt="Sauna" loading="lazy">
+          <div class="gallery-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); pointer-events: none;"></div>
+          <h3 style="position: absolute; bottom: 20px; left: 24px; color: var(--accent-soft); z-index: 1; margin: 0; font-size: 1.5rem;">Sauna</h3>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="assets/images/Red%20Light%20Room.png" alt="Red Light Room" loading="lazy">
+          <div class="gallery-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); pointer-events: none;"></div>
+          <h3 style="position: absolute; bottom: 20px; left: 24px; color: var(--accent-soft); z-index: 1; margin: 0; font-size: 1.5rem;">Red Light Room</h3>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="assets/images/Treatment%20Room.png" alt="Treatment Room" loading="lazy">
+          <div class="gallery-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); pointer-events: none;"></div>
+          <h3 style="position: absolute; bottom: 20px; left: 24px; color: var(--accent-soft); z-index: 1; margin: 0; font-size: 1.5rem;">Treatment Room</h3>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="assets/images/Lounge.png" alt="Lounge" loading="lazy">
+          <div class="gallery-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); pointer-events: none;"></div>
+          <h3 style="position: absolute; bottom: 20px; left: 24px; color: var(--accent-soft); z-index: 1; margin: 0; font-size: 1.5rem;">Lounge</h3>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="assets/images/Preparation%20Area.png" alt="Preparation Area" loading="lazy">
+          <div class="gallery-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); pointer-events: none;"></div>
+          <h3 style="position: absolute; bottom: 20px; left: 24px; color: var(--accent-soft); z-index: 1; margin: 0; font-size: 1.5rem;">Preparation Area</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 05: Member Progress -->
+    <section class="section-padding container">
+      <div class="text-center fade-up">
+        <h2>Track Your Wellness</h2>
+        <p>Insights to help you build a consistent routine.</p>
+      </div>
+
+      <div class="progress-dashboard fade-up">
+        <div class="stat-card">
+          <div class="stat-value">12</div>
+          <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Sessions Completed</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">85%</div>
+          <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Recovery Goal</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">4</div>
+          <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Week Streak</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 06: Wellness Philosophy -->
+    <section class="split-info-section">
+      <div class="split-info-image fade-up">
+        <img src="assets/images/Our%20Philosophy%20of%20Care.png" alt="Wellness Philosophy">
+      </div>
+      <div class="split-info-content">
+        <div class="fade-up">
+          <h2>Our Philosophy of Care</h2>
+          <p>At Lumora, we believe that true wellness goes beyond a single session. It is a continuous journey of
+            restoring the body, resetting the mind, and reclaiming your natural vitality.</p>
+
+          <ul style="list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem;">
+            <li style="display: flex; align-items: center; gap: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span style="font-weight: 500;">Holistic Healing Approaches</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span style="font-weight: 500;">Science-Backed Infrared Therapy</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span style="font-weight: 500;">Personalized Wellness Plans</span>
+            </li>
+          </ul>
+
+          <a href="about.html" class="btn btn-primary" style="display: inline-block; padding: 1rem 2rem;">Discover Our
+            Story</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
+          </div>
+          <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
+          <p style="font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-muted);">
+            Experience the transformative power of infrared heat. Detoxify, relax, and rejuvenate in our premium
+            wellness studio.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="experience.html">Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Membership</h4>
+          <ul>
+            <li><a href="membership.html">Membership Plans</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="experience.html">Wellness Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <form style="display: flex; flex-direction: column; gap: 0.75rem;"
+            onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email" required
+              style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-primary); font-family: inherit; width: 100%; box-sizing: border-box;">
+            <button type="submit" class="btn btn-primary"
+              style="padding: 0.75rem; width: 100%; box-sizing: border-box;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Lumora Wellness Studio. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/interactions.js"></script>
+  <script>
+    document.getElementById('inline-login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      localStorage.setItem('lumora_auth', 'true');
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+
+</html>

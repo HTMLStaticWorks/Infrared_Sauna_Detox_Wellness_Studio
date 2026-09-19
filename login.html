@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMORA WELLNESS | Login</title>
+  <meta name="description" content="Login to your Lumora Wellness Dashboard.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .auth-page {
+      display: flex; min-height: 100vh;
+      align-items: center; justify-content: center;
+      background: var(--bg-secondary);
+      padding: 2rem;
+    }
+    .auth-card {
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 3rem;
+      width: 100%; max-width: 500px;
+    }
+    .auth-header { margin-bottom: 2rem; text-align: center; }
+    
+    .auth-tabs { display: flex; gap: 1rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+    .auth-tab {
+      flex: 1; text-align: center; padding: 1rem; cursor: pointer;
+      font-weight: 500; color: var(--text-muted);
+      border-bottom: 2px solid transparent; transition: all var(--transition-fast);
+    }
+    .auth-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    
+    .auth-panel { display: none; animation: fadeIn 0.3s; }
+    .auth-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 1rem; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-primary);
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); }
+    
+    [dir="rtl"] input[type="email"],
+    [dir="rtl"] input[type="password"],
+    [dir="rtl"] input[type="tel"] { direction: ltr; text-align: left; }
+    
+    .page-controls { position: absolute; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 10; }
+    [dir="rtl"] .page-controls { right: auto; left: 1.5rem; }
+    
+    .icon-btn {
+      background: transparent; border: none; padding: 0.5rem;
+      cursor: pointer; color: var(--text-primary);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: opacity var(--transition-fast);
+    }
+    .icon-btn:hover { opacity: 0.7; }
+    
+    .auth-options { display: flex; justify-content: space-between; margin-bottom: 1.5rem; font-size: 0.875rem; }
+    .auth-options label, .auth-options a { white-space: nowrap; }
+    .social-logins-flex { display: flex; gap: 1rem; }
+    .auth-panel .btn { white-space: nowrap; }
+    
+    .auth-welcome { white-space: nowrap; text-align: center; margin: 0 auto; width: 100%; }
+    @media (min-width: 481px) {
+      .auth-welcome { transform: translateX(-15px); }
+      [dir="rtl"] .auth-welcome { transform: translateX(15px); }
+    }
+    
+    @media (max-width: 480px) {
+      .auth-page { padding: 2rem 1rem; }
+      .auth-card { padding: 3rem 1.5rem; }
+      .social-logins-flex { flex-direction: column; }
+      .auth-options { font-size: 0.8rem; gap: 1rem; }
+      .page-controls { top: 0.25rem; right: 1rem; }
+      [dir="rtl"] .page-controls { right: auto; left: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-controls">
+    <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+    <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+    </button>
+  </div>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="index.html" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; text-decoration: none;">
+          <img src="favicon.svg" alt="LUMORA" width="45" height="45">
+          <h1 style="font-family: var(--font-heading); font-size: 1.75rem; letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase; margin: 0; color: var(--text-primary);">LUMORA</h1>
+        </a>
+        <h2 class="auth-welcome">Welcome to Lumora</h2>
+      </div>
+
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-target="login">Login</div>
+        <div class="auth-tab" data-target="register">Register</div>
+      </div>
+
+      <!-- Login Panel -->
+      <div class="auth-panel active" id="login-panel">
+        <form id="login-form">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" required placeholder="member@lumora.com">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" required placeholder="••••••••">
+          </div>
+          <div class="auth-options">
+            <label style="display: flex; align-items: center; gap: 0.5rem;" dir="auto">
+              <input type="checkbox"> Remember me
+            </label>
+            <a href="#" style="color: var(--accent);" dir="auto">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        </form>
+      </div>
+
+      <!-- Register Panel -->
+      <div class="auth-panel" id="register-panel">
+        <form id="register-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel">
+          </div>
+          <div class="form-group">
+            <label>Membership Interest</label>
+            <select>
+              <option>Essential</option>
+              <option>Restore</option>
+              <option>Unlimited</option>
+              <option>Elite</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+        </form>
+      </div>
+
+      <!-- Social Logins -->
+      <div style="margin-top: 2rem;">
+        <div style="text-align: center; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.875rem; position: relative;">
+          <span style="background: var(--bg-primary); padding: 0 10px; position: relative; z-index: 1;">Or continue with</span>
+          <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0;"></div>
+        </div>
+        <div class="social-logins-flex">
+          <button type="button" class="btn btn-outline" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google
+          </button>
+          <button type="button" class="btn btn-outline" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.04 2.24-.77 3.44-.73 1.47.05 2.74.67 3.53 1.86-3.04 1.76-2.58 5.77.47 7.04-.68 1.71-1.63 3.34-2.52 3.97zm-4.32-15c-.21-2.11 1.63-4.14 3.73-4.28.43 2.2-1.74 4.28-3.73 4.28z"/></svg> Apple
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/interactions.js"></script>
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>

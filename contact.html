@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMORA WELLNESS | Contact</title>
+  <meta name="description" content="Contact Lumora Wellness Studio to plan your visit.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .contact-hero {
+      position: relative;
+      height: 50vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background-color: var(--bg-secondary);
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: var(--spacing-xl);
+      padding: var(--spacing-xl) 5%;
+      margin-bottom: 4rem;
+    }
+    
+    .contact-form-container {
+      background: var(--bg-primary);
+      padding: var(--spacing-lg);
+      border: 1px solid var(--border);
+    }
+    .form-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { flex: 1; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; text-align: start; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 1rem;
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      text-align: start;
+    }
+    
+    [dir="rtl"] .form-group label,
+    [dir="rtl"] .form-group input,
+    [dir="rtl"] .form-group select,
+    [dir="rtl"] .form-group textarea {
+      text-align: right;
+    }
+    
+    [dir="rtl"] .form-group input[type="date"] {
+      position: relative;
+    }
+    [dir="rtl"] .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      left: 1rem;
+      right: auto;
+      cursor: pointer;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--accent);
+    }
+    
+    .studio-info {
+      background: var(--bg-secondary);
+      padding: var(--spacing-lg);
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .info-block h4 { color: var(--accent); margin-bottom: 0.5rem; }
+    
+    .already-member {
+      background: #141414;
+      color: #fff;
+      text-align: center;
+      padding: var(--spacing-lg) 5%;
+    }
+    .already-member h2 { color: #fff; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { flex-direction: column; }
+      .studio-info { text-align: center; }
+      .studio-info .social-links { justify-content: center !important; }
+    }
+    
+    /* Bright Map Section */
+    .bright-map-section {
+      background-color: #fcfcfc;
+      padding: var(--spacing-xl) 5%;
+    }
+    .bright-map-section h2 { color: #1a1a1a; margin-bottom: 2rem; text-align: center; }
+    .map-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      line-height: 0;
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      padding: var(--spacing-xl) 5%;
+      background-color: var(--bg-primary);
+    }
+    .faq-accordion {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .faq-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .faq-item:hover { background: var(--border); }
+    .faq-item summary {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: rotate(45deg);
+      transition: transform 0.3s;
+      margin-top: -6px;
+    }
+    .faq-item[open] summary::after { transform: rotate(-135deg); margin-top: 6px; }
+    .faq-content {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <div class="nav-brand">
+      <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+      <span style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+      <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Login</a>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="mobile-menu">
+    <button class="close-menu">&times;</button>
+    <ul class="nav-links" style="display: flex;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+
+    <div class="mobile-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+    </div>
+    <div class="mobile-cta">
+      <a href="login.html" class="btn btn-outline">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="contact-hero">
+      <div class="container fade-up">
+        <h1 style="color: var(--text-primary);">Let's Connect</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.125rem;">Have questions about our sessions or memberships? Our team is here to help you design your perfect wellness routine.</p>
+      </div>
+    </section>
+
+    <section class="container contact-grid">
+      <div class="contact-form-container fade-up">
+        <h2 style="margin-bottom: 2rem;">Send a Request</h2>
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone">
+            </div>
+            <div class="form-group">
+              <label for="service">Preferred Service</label>
+              <select id="service">
+                <option value="sauna">Infrared Sauna</option>
+                <option value="redlight">Red Light Therapy</option>
+                <option value="detox">Detox Wrap</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date">
+          </div>
+          <div class="form-group" style="margin-bottom: 2rem;">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; white-space: nowrap;">Submit Request</button>
+        </form>
+      </div>
+
+      <div class="studio-info fade-up">
+        <h2>Studio Information</h2>
+        
+        <div class="info-block">
+          <h4>Studio Address</h4>
+          <p>[Placeholder Studio Address]<br>[City, State, Zip]</p>
+        </div>
+        
+        <div class="info-block">
+          <h4>Contact Details</h4>
+          <p>Phone: [000-000-0000]<br>Email: [hello@lumora.com]</p>
+        </div>
+        
+        <div class="info-block">
+          <h4>Opening Hours</h4>
+          <p>Mon - Fri: 7am - 9pm<br>Sat - Sun: 8am - 8pm</p>
+        </div>
+        
+        <div class="info-block">
+          <h4>Follow Us</h4>
+          <div class="social-links" style="justify-content: flex-start; margin-top: 0.5rem;">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="bright-map-section fade-up">
+      <div class="container">
+        <h2>Find Us</h2>
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019113642436!2d-122.39719368468205!3d37.79339347975618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858066bb7d903f%3A0x8673f443b7e4fcf5!2sFerry%20Building!5e0!3m2!1sen!2sus!4v1689234901234!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section fade-up">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          <details class="faq-item">
+            <summary>What should I wear to my sauna session?</summary>
+            <div class="faq-content">We recommend wearing loose, comfortable clothing. During the session, most clients prefer to wear a swimsuit or the provided bamboo wrap to maximize skin exposure to the infrared light.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How often should I use the infrared sauna?</summary>
+            <div class="faq-content">For optimal results, we suggest 2-3 sessions per week. Consistency is key to building a strong wellness routine, though even one session a week provides excellent recovery benefits.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Do I need to book an appointment in advance?</summary>
+            <div class="faq-content">Yes, to ensure you get your preferred time and a fully prepared private suite, we highly recommend booking in advance through our online system or giving us a call.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Is red light therapy safe for everyone?</summary>
+            <div class="faq-content">Red light therapy is completely natural, non-invasive, and safe for most people. However, if you are pregnant, have epilepsy, or take light-sensitive medications, please consult your physician first.</div>
+          </details>
+          <details class="faq-item">
+            <summary>What is included in the recovery lounge?</summary>
+            <div class="faq-content">Our recovery lounge includes complimentary herbal teas, infused waters, fresh towels, and a tranquil space to gradually cool down and integrate the benefits of your session before leaving.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="already-member">
+      <div class="container fade-up">
+        <h2>Already a Member?</h2>
+        <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.7);">Access your sessions, membership and wellness progress from your dashboard.</p>
+        <a href="login.html" class="btn btn-outline" style="color:#fff; border-color:#fff;">Login to Dashboard</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
+          </div>
+          <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
+          <p style="font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-muted);">
+            Experience the transformative power of infrared heat. Detoxify, relax, and rejuvenate in our premium wellness studio.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="experience.html">Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Membership</h4>
+          <ul>
+            <li><a href="membership.html">Membership Plans</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="experience.html">Wellness Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <form style="display: flex; flex-direction: column; gap: 0.75rem;" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email" required style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-primary); font-family: inherit; width: 100%; box-sizing: border-box;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.75rem; width: 100%; box-sizing: border-box;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Lumora Wellness Studio. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reusable Modal for Success -->
+  <div class="modal-overlay" id="global-modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div id="modal-dynamic-content"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/interactions.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.ModalManager.open(`
+        <div style="text-align:center; padding: 2rem;">
+          <h2 style="color: var(--accent);">Thank You</h2>
+          <p>Your request has been received. Our team will contact you shortly.</p>
+        </div>
+      `);
+      e.target.reset();
+    });
+  </script>
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>

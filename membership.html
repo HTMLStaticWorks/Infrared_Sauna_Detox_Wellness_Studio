@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMORA WELLNESS | Membership</title>
+  <meta name="description" content="Make wellness a ritual with Lumora memberships.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .membership-hero {
+      position: relative; min-height: 60vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; margin-bottom: var(--spacing-xl);
+      background-color: var(--bg-secondary);
+    }
+    
+    .pricing-table {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto var(--spacing-xl);
+    }
+    .plan-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+    .plan-row:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+      transform: translateX(10px);
+    }
+    .plan-info { flex: 2; }
+    .plan-info h3 { margin-bottom: 0.25rem; }
+    .plan-info p { margin: 0; font-size: 0.875rem; }
+    
+    .plan-sessions { flex: 1; text-align: center; font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); }
+    .plan-price { flex: 1; text-align: right; font-weight: 600; font-size: 1.25rem; }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: var(--spacing-lg);
+    }
+    .benefit-item {
+      padding: 2rem;
+      background-color: var(--bg-secondary);
+      border-left: 2px solid var(--accent);
+    }
+
+    /* Modal Overlay (handled in interactions.js) */
+    .modal-overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: var(--modal-overlay);
+      display: flex; justify-content: center; align-items: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 2000;
+      backdrop-filter: blur(5px);
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal-content {
+      background: var(--bg-primary);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      width: 90%; max-width: 500px;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal-content { transform: scale(1); }
+    .close-modal {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary);
+    }
+
+    /* Corporate Section */
+    .corporate-section {
+      display: flex;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      align-items: stretch;
+      box-shadow: var(--shadow);
+      margin-top: var(--spacing-xl);
+    }
+    .corporate-image {
+      flex: 1;
+      min-height: 400px;
+      position: relative;
+    }
+    .corporate-image img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    .corporate-content {
+      flex: 1;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .plan-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .plan-sessions, .plan-price { text-align: left; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .corporate-section { flex-direction: column; }
+      .corporate-image { width: 100%; min-height: 350px; }
+      .corporate-content { padding: 2rem; align-items: center; text-align: center; }
+      .corporate-content li { justify-content: center; text-align: center; }
+    }
+    @media (max-width: 575px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <div class="nav-brand">
+      <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+      <span style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html" class="active">Membership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+      <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Login</a>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <button class="close-menu">&times;</button>
+    <ul class="nav-links" style="display: flex;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home-2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html" class="active">Membership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+
+    <div class="mobile-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+      </button>
+    </div>
+    <div class="mobile-cta">
+      <a href="login.html" class="btn btn-outline">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="membership-hero">
+      <div class="container fade-up" style="position: relative; z-index: 2;">
+        <h1 style="color: var(--text-primary);">Make Wellness a Ritual</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.125rem;">Build a consistent wellness routine with flexible membership options.</p>
+      </div>
+    </section>
+
+    <section class="container fade-up">
+      <div class="pricing-table">
+        <div class="plan-row" data-plan="Essential">
+          <div class="plan-info">
+            <h3>Essential</h3>
+            <p>Perfect for maintaining a baseline wellness routine.</p>
+          </div>
+          <div class="plan-sessions">4 Sessions / Mo</div>
+          <div class="plan-price">$120 / Mo</div>
+        </div>
+
+        <div class="plan-row" data-plan="Restore" style="border-color: var(--accent);">
+          <div class="plan-info">
+            <h3>Restore <span style="font-size: 0.7rem; background: var(--accent); color: #fff; padding: 2px 6px; border-radius: 10px; margin-left: 10px;">POPULAR</span></h3>
+            <p>Ideal for deep recovery and consistent benefits.</p>
+          </div>
+          <div class="plan-sessions">8 Sessions / Mo</div>
+          <div class="plan-price">$200 / Mo</div>
+        </div>
+
+        <div class="plan-row" data-plan="Unlimited">
+          <div class="plan-info">
+            <h3>Unlimited</h3>
+            <p>For those dedicated to daily wellness practice.</p>
+          </div>
+          <div class="plan-sessions">Unlimited Access</div>
+          <div class="plan-price">$350 / Mo</div>
+        </div>
+
+        <div class="plan-row" data-plan="Elite">
+          <div class="plan-info">
+            <h3>Elite</h3>
+            <p>Premium access including guest passes and all services.</p>
+          </div>
+          <div class="plan-sessions">All Inclusive</div>
+          <div class="plan-price">$500 / Mo</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding container">
+      <div class="text-center fade-up">
+        <h2>Membership Benefits</h2>
+      </div>
+      <div class="benefits-grid fade-up">
+        <div class="benefit-item">
+          <h4>Session Tracking</h4>
+          <p>Monitor your progress and history directly from your member dashboard.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Priority Booking</h4>
+          <p>Reserve your preferred times and rooms up to 30 days in advance.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Wellness Goal Tracking</h4>
+          <p>Set goals and receive personalized protocol recommendations.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Member-Only Events</h4>
+          <p>Exclusive access to guided workshops and expert sessions.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section-padding container">
+      <div class="corporate-section fade-up">
+        <div class="corporate-image">
+          <img src="assets/images/Annual%20Memberships.png" alt="Annual Memberships">
+        </div>
+        <div class="corporate-content">
+          <h2 style="font-family: var(--font-heading); font-size: 2.25rem; margin-bottom: 1rem;">Annual Memberships</h2>
+          <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.125rem;">Commit to your wellness journey and save. Upgrade any monthly plan to an annual membership to receive two months free, plus exclusive VIP studio perks.</p>
+          <ul style="list-style: none; padding: 0; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <li style="display: flex; align-items: center; gap: 1rem;"><svg width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg> Two Months Free (Save 15%)</li>
+            <li style="display: flex; align-items: center; gap: 1rem;"><svg width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg> 4 Complimentary Guest Passes</li>
+            <li style="display: flex; align-items: center; gap: 1rem;"><svg width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg> Early Access to Special Events</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline">Upgrade to Annual</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
+          </div>
+          <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
+          <p style="font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-muted);">
+            Experience the transformative power of infrared heat. Detoxify, relax, and rejuvenate in our premium wellness studio.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="experience.html">Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Membership</h4>
+          <ul>
+            <li><a href="membership.html">Membership Plans</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="experience.html">Wellness Experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <form style="display: flex; flex-direction: column; gap: 0.75rem;" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email" required style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-primary); font-family: inherit; width: 100%; box-sizing: border-box;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.75rem; width: 100%; box-sizing: border-box;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Lumora Wellness Studio. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reusable Modal Container -->
+  <div class="modal-overlay" id="global-modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div id="modal-dynamic-content"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/interactions.js"></script>
+  <script>
+    const planRows = document.querySelectorAll('.plan-row');
+    
+    planRows.forEach(row => {
+      row.addEventListener('click', () => {
+        const planName = row.dataset.plan;
+        
+        const modalHtml = `
+          <h2 style="margin-bottom: 1rem;">Join ${planName} Plan</h2>
+          <form id="membership-form" action="login.html">
+            <div style="margin-bottom: 1rem;">
+              <label style="display:block; margin-bottom: 0.5rem; font-size: 0.875rem;">Full Name</label>
+              <input type="text" required style="width:100%; padding: 0.75rem; border:1px solid var(--border); background:var(--bg-secondary); color:var(--text-primary);">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display:block; margin-bottom: 0.5rem; font-size: 0.875rem;">Email Address</label>
+              <input type="email" required style="width:100%; padding: 0.75rem; border:1px solid var(--border); background:var(--bg-secondary); color:var(--text-primary);">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display:block; margin-bottom: 0.5rem; font-size: 0.875rem;">Selected Plan</label>
+              <input type="text" readonly value="${planName}" style="width:100%; padding: 0.75rem; border:1px solid var(--accent); background:var(--bg-secondary); color:var(--accent);">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Continue to Member Login</button>
+          </form>
+        `;
+        
+        window.ModalManager.open(modalHtml);
+      });
+    });
+  </script>
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>

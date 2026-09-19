@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMORA WELLNESS | Member Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    /* Dashboard Specific Styles */
+    body { background-color: var(--bg-primary); }
+    
+    .dashboard-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .dashboard-sidebar {
+      width: 280px;
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      transition: all var(--transition-normal);
+      z-index: 100;
+    }
+    .sidebar-brand { margin-bottom: 3rem; display: flex; align-items: center; gap: 10px; }
+    .sidebar-nav { list-style: none; flex: 1; }
+    .sidebar-nav li { margin-bottom: 0.5rem; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 10px; padding: 1rem; border-radius: var(--radius-sm);
+      color: var(--text-secondary); font-weight: 500; transition: all var(--transition-fast);
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      background-color: var(--bg-primary); color: var(--accent);
+    }
+    
+    .dashboard-content {
+      flex: 1;
+      padding: 3rem 5%;
+      overflow-y: auto;
+    }
+    .dashboard-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;
+    }
+    
+    .mobile-sidebar-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
+
+    /* Overview Cards */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .dash-card {
+      background: var(--bg-secondary);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .dash-card h4 { color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .dash-card .value { font-family: var(--font-heading); font-size: 2.5rem; color: var(--accent); }
+
+    /* Book Session */
+    .book-session-card {
+      background: var(--bg-secondary);
+      padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-bottom: 3rem;
+    }
+    .time-slots { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .time-slot {
+      padding: 0.5rem 1rem; border: 1px solid var(--border); background: var(--bg-primary);
+      border-radius: var(--radius-sm); cursor: pointer;
+    }
+    .time-slot:hover, .time-slot.selected { border-color: var(--accent); color: var(--accent); }
+
+    /* Session History Table */
+    .history-table { width: 100%; border-collapse: collapse; margin-bottom: 3rem; }
+    .history-table th, .history-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .history-table th { color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; }
+    .status-completed { color: #4a9e58; }
+
+    /* Progress Ring */
+    .progress-ring { width: 120px; height: 120px; margin: 0 auto; display: block; }
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.35s; transform: rotate(-90deg); transform-origin: 50% 50%;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-sidebar { position: fixed; left: -100%; box-shadow: var(--shadow); }
+      .dashboard-sidebar.active { left: 0; }
+      .mobile-sidebar-toggle { display: block; }
+      [dir="rtl"] .dashboard-sidebar { left: auto; right: -100%; }
+      [dir="rtl"] .dashboard-sidebar.active { right: 0; }
+    }
+    @media (max-width: 768px) {
+      /* Stack table on mobile */
+      .history-table thead { display: none; }
+      .history-table, .history-table tbody, .history-table tr, .history-table td { display: block; width: 100%; }
+      .history-table tr { margin-bottom: 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
+      .history-table td { border: none; padding: 0.5rem 0; }
+      .history-table td::before { content: attr(data-label); font-weight: bold; display: inline-block; width: 100px; }
+      .dashboard-header h2 { white-space: nowrap; font-size: 1.25rem !important; margin: 0 auto !important; }
+      .welcome-wrapper { width: 100%; justify-content: center; position: relative; }
+      .welcome-wrapper .mobile-sidebar-toggle { position: absolute; left: 0; }
+      .profile-wrapper { width: 100%; justify-content: center; margin-top: 0.5rem; }
+      .profile-info { text-align: center !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <a href="index.html" class="sidebar-brand" style="text-decoration: none; color: inherit;">
+        <img src="favicon.svg" alt="LUMORA" width="30" height="30">
+        <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
+      </a>
+      <ul class="sidebar-nav">
+        <li><a href="#overview" class="active">Overview</a></li>
+        <li><a href="#stats">Wellness Stats</a></li>
+        <li><a href="#rewards">Rewards</a></li>
+        <li><a href="#book">Book Session</a></li>
+        <li><a href="#history">Session History</a></li>
+        <li><a href="#payments">Payments</a></li>
+      </ul>
+      <div style="margin-top: auto;">
+        <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem;">
+          <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+          </button>
+        </div>
+        <a href="#" id="logout-btn" class="btn btn-outline" style="width: 100%; color: var(--accent); border-color: var(--accent); padding: 0.5rem;">Logout</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="dashboard-header fade-up" style="flex-wrap: wrap; gap: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        <div class="welcome-wrapper" style="display: flex; align-items: center; gap: 1rem;">
+          <button class="mobile-sidebar-toggle" id="sidebar-toggle">☰</button>
+          <h2 style="margin: 0;">Welcome back, Alex!</h2>
+        </div>
+        <div class="profile-wrapper" style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-family: var(--font-heading); flex-shrink: 0;">
+              AM
+            </div>
+            <div class="profile-info" style="text-align: left;">
+              <div style="font-weight: 600; font-size: 0.875rem; color: var(--text-primary);">Alex Morgan</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Premium Member</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview -->
+      <section id="overview" class="fade-up">
+        <div class="dashboard-grid" style="margin-bottom: 2rem;">
+          <div class="dash-card">
+            <h4>Membership Status</h4>
+            <div class="value" style="color: var(--text-primary);">Restore <span style="font-size: 1rem; font-family: var(--font-body); color: #4a9e58;">(Active)</span></div>
+          </div>
+          <div class="dash-card">
+            <h4>Sessions Remaining</h4>
+            <div class="value">06</div>
+          </div>
+          <div class="dash-card">
+            <h4>Monthly Usage</h4>
+            <svg class="progress-ring" viewBox="0 0 120 120">
+              <circle class="progress-ring-circle" stroke="var(--border)" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
+              <circle class="progress-ring-circle" stroke="var(--accent)" stroke-width="8" fill="transparent" r="50" cx="60" cy="60" data-percent="25"/>
+              <text x="60" y="65" font-family="var(--font-heading)" font-size="20" text-anchor="middle" fill="currentColor">02/08</text>
+            </svg>
+          </div>
+          <div class="dash-card">
+            <h4>Next Session</h4>
+            <div style="font-family: var(--font-heading); font-size: 1.5rem;">Infrared Sauna</div>
+            <div style="color: var(--text-muted); font-size: 0.875rem;">Tomorrow, 10:00 AM</div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-top: 2rem;">
+          <h3 style="margin-bottom: 1rem;">Recent Activity</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">You completed a 45-min Infrared Sauna session yesterday. Great job staying consistent!</p>
+          <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="document.querySelector('[href=\'#history\']').click(); return false;">View Full History</a>
+        </div>
+      </section>
+
+      <!-- Wellness Stats -->
+      <section id="stats" class="fade-up" style="display: none;">
+        <div class="dashboard-grid" style="margin-bottom: 2rem;">
+          <div class="dash-card">
+            <h4>Total Sweat Sessions</h4>
+            <div class="value">24</div>
+          </div>
+          <div class="dash-card">
+            <h4>Calories Burned</h4>
+            <div class="value">14,400</div>
+          </div>
+          <div class="dash-card">
+            <h4>Detox Index</h4>
+            <div class="value">High</div>
+          </div>
+          <div class="dash-card">
+            <h4>Avg Session Temp</h4>
+            <div class="value">145°F</div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-top: 2rem;">
+          <h3 style="margin-bottom: 1rem;">Weekly Breakdown</h3>
+          <div style="display: flex; gap: 1rem; height: 150px; align-items: flex-end; padding-top: 1rem; border-top: 1px solid var(--border);">
+            <div style="flex: 1; background: var(--accent); height: 40%; border-radius: 4px 4px 0 0;" title="Mon"></div>
+            <div style="flex: 1; background: var(--border); height: 20%; border-radius: 4px 4px 0 0;" title="Tue"></div>
+            <div style="flex: 1; background: var(--accent); height: 60%; border-radius: 4px 4px 0 0;" title="Wed"></div>
+            <div style="flex: 1; background: var(--border); height: 30%; border-radius: 4px 4px 0 0;" title="Thu"></div>
+            <div style="flex: 1; background: var(--accent); height: 80%; border-radius: 4px 4px 0 0;" title="Fri"></div>
+            <div style="flex: 1; background: var(--accent); height: 90%; border-radius: 4px 4px 0 0;" title="Sat"></div>
+            <div style="flex: 1; background: var(--border); height: 10%; border-radius: 4px 4px 0 0;" title="Sun"></div>
+          </div>
+          <div style="display: flex; gap: 1rem; margin-top: 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.75rem;">
+            <div style="flex: 1;">M</div><div style="flex: 1;">T</div><div style="flex: 1;">W</div><div style="flex: 1;">T</div><div style="flex: 1;">F</div><div style="flex: 1;">S</div><div style="flex: 1;">S</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rewards -->
+      <section id="rewards" class="fade-up" style="display: none;">
+        <div class="dashboard-grid" style="margin-bottom: 2rem;">
+          <div class="dash-card">
+            <h4>Current Points</h4>
+            <div class="value">1,250</div>
+          </div>
+          <div class="dash-card">
+            <h4>Next Milestone</h4>
+            <div class="value" style="color: var(--text-primary); font-size: 1.5rem; margin-top: 10px;">Free Add-on at 1,500</div>
+          </div>
+          <div class="dash-card">
+            <h4>Referrals</h4>
+            <div class="value">3</div>
+          </div>
+          <div class="dash-card">
+            <h4>Redeemable Rewards</h4>
+            <div class="value" style="font-size: 1.5rem; margin-top: 10px;"><span style="color: var(--accent);">2 Available</span></div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-top: 2rem;">
+          <h3 style="margin-bottom: 1.5rem;">Available Rewards</h3>
+          <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--radius-sm);">
+              <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Complimentary Towel Service</h4>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">500 Points</p>
+              <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="alert('Redeemed!')">Redeem</button>
+            </div>
+            <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--radius-sm);">
+              <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Cold Plunge Add-on</h4>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">1000 Points</p>
+              <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="alert('Redeemed!')">Redeem</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Book Session -->
+      <section id="book" class="book-session-card fade-up" style="display: none;">
+        <h3 style="margin-bottom: 1.5rem;">Book a Session</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.875rem; margin-bottom: 0.5rem;">Service</label>
+            <select style="width:100%; padding: 0.75rem; background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-primary);">
+              <option>Infrared Sauna (45 Min)</option>
+              <option>Red Light Therapy (20 Min)</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.875rem; margin-bottom: 0.5rem;">Date</label>
+            <input type="date" style="width:100%; padding: 0.75rem; background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-primary);">
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <label style="display: block; font-size: 0.875rem; margin-bottom: 0.5rem;">Available Times</label>
+          <div class="time-slots">
+            <div class="time-slot selected">09:00 AM</div>
+            <div class="time-slot">10:00 AM</div>
+            <div class="time-slot">11:30 AM</div>
+            <div class="time-slot">02:00 PM</div>
+            <div class="time-slot">04:30 PM</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top: 2rem;" onclick="alert('Demo: Session Confirmed!')">Confirm Session</button>
+        
+        <div style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+          <h3 style="margin-bottom: 1.5rem;">Popular Add-ons</h3>
+          <div class="dashboard-grid">
+            <div class="dash-card">
+              <h4>Aromatherapy</h4>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Enhance relaxation with essential oils.</p>
+              <div class="value" style="font-size: 1.2rem;">+$15</div>
+            </div>
+            <div class="dash-card">
+              <h4>Chromotherapy</h4>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Color light therapy for mood balance.</p>
+              <div class="value" style="font-size: 1.2rem;">+$20</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Session History -->
+      <section id="history" class="fade-up" style="display: none;">
+        <h3 style="margin-bottom: 1.5rem;">Session History</h3>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Service</th>
+              <th>Duration</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Date">Oct 12, 2026</td>
+              <td data-label="Service">Infrared Sauna</td>
+              <td data-label="Duration">45 min</td>
+              <td data-label="Status" class="status-completed">Completed</td>
+            </tr>
+            <tr>
+              <td data-label="Date">Oct 05, 2026</td>
+              <td data-label="Service">Red Light Therapy</td>
+              <td data-label="Duration">20 min</td>
+              <td data-label="Status" class="status-completed">Completed</td>
+            </tr>
+            <tr>
+              <td data-label="Date">Sep 28, 2026</td>
+              <td data-label="Service">Detox Wrap</td>
+              <td data-label="Duration">60 min</td>
+              <td data-label="Status" class="status-completed">Completed</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="dash-card" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Download Wellness Report</h4>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Get a detailed PDF of your sessions and health metrics for the past month.</p>
+          </div>
+          <button class="btn btn-outline" onclick="alert('Downloading...')">Download PDF</button>
+        </div>
+      </section>
+
+      <!-- Payments -->
+      <section id="payments" class="dash-card fade-up" style="display: none;">
+        <h3 style="margin-bottom: 1.5rem;">Payments & Billing</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1rem;">
+          <div>
+            <div style="font-weight: 500;">Restore Membership</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">Billed monthly on the 1st</div>
+          </div>
+          <div style="font-weight: 600;">$200.00</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">Payment Method</div>
+            <div>Visa ending in **** 4242</div>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="alert('Demo action')">Update</button>
+            <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="alert('Demo action')">Receipts</button>
+          </div>
+        </div>
+        
+        <div style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+          <h3 style="margin-bottom: 1.5rem;">Recent Invoices</h3>
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Date">Oct 01, 2026</td>
+                <td data-label="Description">Restore Membership</td>
+                <td data-label="Amount">$200.00</td>
+                <td data-label="Status" class="status-completed">Paid</td>
+              </tr>
+              <tr>
+                <td data-label="Date">Sep 01, 2026</td>
+                <td data-label="Description">Restore Membership</td>
+                <td data-label="Amount">$200.00</td>
+                <td data-label="Status" class="status-completed">Paid</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+
+  </div>
+
+  <script src="assets/js/interactions.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>
+    // Time slot selection
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+      });
+    });
+    
+    // Sidebar nav highlighting and tab switching
+    const sections = document.querySelectorAll('main > section');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    
+    function showSection(targetId) {
+      sections.forEach(section => {
+        if ('#' + section.getAttribute('id') === targetId) {
+          section.style.display = section.classList.contains('dashboard-grid') ? 'grid' : 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        showSection(targetId);
+        
+        // Close sidebar on mobile after clicking
+        const sidebar = document.querySelector('.dashboard-sidebar');
+        if(window.innerWidth <= 1024 && sidebar.classList.contains('active')) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
+
+    // Initialize display
+    const activeLink = document.querySelector('.sidebar-nav a.active');
+    if(activeLink) {
+      showSection(activeLink.getAttribute('href'));
+    }
+  </script>
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
