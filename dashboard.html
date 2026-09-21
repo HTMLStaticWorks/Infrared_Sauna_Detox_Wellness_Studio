@@ -72,10 +72,13 @@
       background: var(--bg-secondary);
       padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-bottom: 3rem;
     }
-    .time-slots { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    [data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+    .time-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
     .time-slot {
       padding: 0.5rem 1rem; border: 1px solid var(--border); background: var(--bg-primary);
-      border-radius: var(--radius-sm); cursor: pointer;
+      border-radius: var(--radius-sm); cursor: pointer; text-align: center;
     }
     .time-slot:hover, .time-slot.selected { border-color: var(--accent); color: var(--accent); }
 
@@ -254,7 +257,7 @@
         </div>
         <div class="dash-card" style="margin-top: 2rem;">
           <h3 style="margin-bottom: 1.5rem;">Available Rewards</h3>
-          <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="dashboard-grid" style="gap: 1rem;">
             <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--radius-sm);">
               <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Complimentary Towel Service</h4>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">500 Points</p>
