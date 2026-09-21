@@ -15,12 +15,17 @@
       background: var(--bg-secondary);
       padding: 2rem;
     }
+    .auth-container {
+      width: 100%; max-width: 500px;
+      display: flex;
+      flex-direction: column;
+    }
     .auth-card {
       background: var(--bg-primary);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       padding: 3rem;
-      width: 100%; max-width: 500px;
+      width: 100%;
     }
     .auth-header { margin-bottom: 2rem; text-align: center; }
     
@@ -47,11 +52,23 @@
     [dir="rtl"] input[type="password"],
     [dir="rtl"] input[type="tel"] { direction: ltr; text-align: left; }
     
-    .page-controls { position: absolute; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 10; }
+    .page-controls { 
+      position: absolute; top: 1.5rem; right: 1.5rem; 
+      display: flex; gap: 0.5rem; z-index: 10; 
+    }
     [dir="rtl"] .page-controls { right: auto; left: 1.5rem; }
     
+    @media (max-width: 767px) {
+      .page-controls { 
+        position: static;
+        justify-content: flex-end; 
+        margin-bottom: 1rem; 
+      }
+      [dir="rtl"] .page-controls { justify-content: flex-start; }
+    }
+    
     .icon-btn {
-      background: transparent; border: none; padding: 0.5rem;
+      background: transparent; border: 1px solid var(--border); padding: 0.5rem;
       cursor: pointer; color: var(--text-primary);
       display: flex; align-items: center; justify-content: center;
       border-radius: 50%; transition: opacity var(--transition-fast);
@@ -74,25 +91,23 @@
       .auth-card { padding: 3rem 1.5rem; }
       .social-logins-flex { flex-direction: column; }
       .auth-options { font-size: 0.8rem; gap: 1rem; }
-      .page-controls { top: 0.25rem; right: 1rem; }
-      [dir="rtl"] .page-controls { right: auto; left: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="page-controls">
-    <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
-      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-    </button>
-    <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
-      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
-    </button>
-  </div>
-
   <div class="auth-page">
-    <div class="auth-card">
-      <div class="auth-header">
+    <div class="auth-container">
+      <div class="page-controls">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+        </button>
+      </div>
+      <div class="auth-card">
+        <div class="auth-header">
         <a href="index.html" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; text-decoration: none;">
           <img src="favicon.svg" alt="LUMORA" width="45" height="45">
           <h1 style="font-family: var(--font-heading); font-size: 1.75rem; letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase; margin: 0; color: var(--text-primary);">LUMORA</h1>
@@ -178,6 +193,7 @@
           </button>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
