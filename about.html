@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUMORA WELLNESS | About</title>
   <meta name="description" content="Discover the story and philosophy behind Lumora Wellness.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon-dark.svg">
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
     .about-hero {
-      min-height: 60vh;
+      min-height: 70vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 0 5%;
+      padding: 120px 5% 40px;
       text-align: center;
-      background-color: var(--bg-secondary);
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/about.png') center/cover no-repeat;
     }
-    .about-hero h1 { max-width: 800px; margin: 0 auto 1.5rem; }
+    .about-hero h1, .about-hero p { color: #ffffff !important; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    .about-hero h1 { max-width: 100%; margin: 0 auto 1.5rem; }
     
     .philosophy-section {
       background-color: var(--bg-primary);
@@ -30,6 +31,7 @@
     }
     .philosophy-item:nth-child(even) { direction: rtl; }
     .philosophy-item:nth-child(even) > * { direction: ltr; }
+    .philosophy-item:last-child { margin-bottom: 0; }
     
     .philosophy-img {
       position: relative;
@@ -143,7 +145,38 @@
   <!-- Navbar -->
   <nav class="navbar scrolled">
     <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
-      <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" >
+  <defs>
+    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
+      <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Energy Rings -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8"/>
+  
+  <!-- Core Sun/Infrared Element -->
+  <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Minimalist Geometric Rays -->
+  <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <line x1="50" y1="12" x2="50" y2="20" />
+    <line x1="50" y1="80" x2="50" y2="88" />
+    <line x1="12" y1="50" x2="20" y2="50" />
+    <line x1="80" y1="50" x2="88" y2="50" />
+    
+    <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
+    <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
+    <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
+    <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
+  </g>
+
+  <!-- Central Glow / Inner Circle -->
+  <circle cx="50" cy="50" r="10" fill="url(#warmGradient)"/>
+</svg>
+
       <span style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
     </a>
     <ul class="nav-links">
@@ -163,7 +196,7 @@
       <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
       </button>
-      <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Login</a>
+      <a href="login.html" class="btn btn-outline">Login</a>
       <div class="hamburger">
         <span></span><span></span><span></span>
       </div>
@@ -240,7 +273,7 @@
       </div>
     </section>
 
-    <section class="section-padding container">
+    <section class="container" style="padding-bottom: var(--spacing-xxl);">
       <div class="text-center fade-up" style="margin-bottom: var(--spacing-lg);">
         <h2>The Studio</h2>
       </div>
@@ -265,7 +298,7 @@
 
     <section class="comparison-section">
       <div class="container fade-up text-center">
-        <h2>Why Lumora</h2>
+        <h2>Why Choose Us</h2>
         
         <div class="comparison-grid">
           <div class="comparison-card">
@@ -311,6 +344,15 @@
         </div>
       </div>
     </section>
+
+    <!-- CTA Banner -->
+    <section style="background-color: var(--accent); color: #fff; padding: 5rem 5%; text-align: center;">
+      <div class="container fade-up">
+        <h2 style="color: #fff; font-size: 3rem; margin-bottom: 1.5rem;">Ready to Restore Your Body?</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Book your private wellness session today and experience the transformative power of infrared heat.</p>
+        <a href="contact.html" class="btn" style="background-color: #fff; color: var(--accent);">Book Your Session</a>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -318,7 +360,38 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit;">
-            <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" >
+  <defs>
+    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
+      <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Energy Rings -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8"/>
+  
+  <!-- Core Sun/Infrared Element -->
+  <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Minimalist Geometric Rays -->
+  <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <line x1="50" y1="12" x2="50" y2="20" />
+    <line x1="50" y1="80" x2="50" y2="88" />
+    <line x1="12" y1="50" x2="20" y2="50" />
+    <line x1="80" y1="50" x2="88" y2="50" />
+    
+    <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
+    <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
+    <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
+    <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
+  </g>
+
+  <!-- Central Glow / Inner Circle -->
+  <circle cx="50" cy="50" r="10" fill="url(#warmGradient)"/>
+</svg>
+
             <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
           </a>
           <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
@@ -393,3 +466,6 @@
 </script>
 </body>
 </html>
+
+
+

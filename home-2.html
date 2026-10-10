@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUMORA WELLNESS | Home 2</title>
   <meta name="description" content="A Warmer Way to Feel Better. Discover the science of infrared wellness.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon-dark.svg">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
@@ -320,7 +320,38 @@
   <!-- Global Navbar -->
   <nav class="navbar scrolled"> <!-- Default scrolled for non-hero overlay -->
     <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
-      <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" >
+  <defs>
+    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
+      <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Energy Rings -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8"/>
+  
+  <!-- Core Sun/Infrared Element -->
+  <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Minimalist Geometric Rays -->
+  <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <line x1="50" y1="12" x2="50" y2="20" />
+    <line x1="50" y1="80" x2="50" y2="88" />
+    <line x1="12" y1="50" x2="20" y2="50" />
+    <line x1="80" y1="50" x2="88" y2="50" />
+    
+    <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
+    <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
+    <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
+    <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
+  </g>
+
+  <!-- Central Glow / Inner Circle -->
+  <circle cx="50" cy="50" r="10" fill="url(#warmGradient)"/>
+</svg>
+
       <span style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
     </a>
     <ul class="nav-links">
@@ -356,7 +387,7 @@
           <path d="M21 17H3" />
         </svg>
       </button>
-      <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Login</a>
+      <a href="login.html" class="btn btn-outline">Login</a>
       <div class="hamburger">
         <span></span><span></span><span></span>
       </div>
@@ -397,8 +428,24 @@
         <h1 style="font-size: clamp(3rem, 5vw, 4.5rem);">A Warmer Way to Feel Better</h1>
         <p style="font-size: 1.25rem; margin-bottom: 2rem; max-width: 500px;">Elevate your wellness routine with
           science-backed infrared technology and premium hospitality.</p>
-        <div>
+        <div style="margin-bottom: 3rem;">
           <a href="services.html" class="btn btn-primary">Discover Sessions</a>
+        </div>
+        
+        <!-- Stats -->
+        <div class="progress-dashboard" style="background: transparent; border: none; padding: 0; box-shadow: none; margin-top: auto; display: flex; gap: 2rem; flex-wrap: wrap;">
+          <div class="stat-card" style="text-align: left;">
+            <div class="stat-value" style="font-size: 2.5rem; line-height: 1;">12k+</div>
+            <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Sessions</p>
+          </div>
+          <div class="stat-card" style="text-align: left;">
+            <div class="stat-value" style="font-size: 2.5rem; line-height: 1;">98%</div>
+            <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Recovery</p>
+          </div>
+          <div class="stat-card" style="text-align: left;">
+            <div class="stat-value" style="font-size: 2.5rem; line-height: 1;">4.9</div>
+            <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Rating</p>
+          </div>
         </div>
       </div>
       <div class="hero-split-image">
@@ -498,28 +545,6 @@
       </div>
     </section>
 
-    <!-- Section 05: Member Progress -->
-    <section class="section-padding container">
-      <div class="text-center fade-up">
-        <h2>Track Your Wellness</h2>
-        <p>Insights to help you build a consistent routine.</p>
-      </div>
-
-      <div class="progress-dashboard fade-up">
-        <div class="stat-card">
-          <div class="stat-value">12</div>
-          <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Sessions Completed</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">85%</div>
-          <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Recovery Goal</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">4</div>
-          <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">Week Streak</p>
-        </div>
-      </div>
-    </section>
 
     <!-- Section 06: Wellness Philosophy -->
     <section class="split-info-section">
@@ -569,7 +594,38 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit;">
-            <img src="favicon.svg" alt="LUMORA" width="40" height="40">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" >
+  <defs>
+    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
+      <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Energy Rings -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8"/>
+  
+  <!-- Core Sun/Infrared Element -->
+  <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Minimalist Geometric Rays -->
+  <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <line x1="50" y1="12" x2="50" y2="20" />
+    <line x1="50" y1="80" x2="50" y2="88" />
+    <line x1="12" y1="50" x2="20" y2="50" />
+    <line x1="80" y1="50" x2="88" y2="50" />
+    
+    <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
+    <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
+    <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
+    <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
+  </g>
+
+  <!-- Central Glow / Inner Circle -->
+  <circle cx="50" cy="50" r="10" fill="url(#warmGradient)"/>
+</svg>
+
             <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
           </a>
           <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
@@ -667,3 +723,6 @@
 </body>
 
 </html>
+
+
+

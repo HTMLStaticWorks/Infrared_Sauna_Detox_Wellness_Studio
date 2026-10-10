@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUMORA WELLNESS | Login</title>
   <meta name="description" content="Login to your Lumora Wellness Dashboard.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon-dark.svg">
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
@@ -80,7 +80,7 @@
     .social-logins-flex { display: flex; gap: 1rem; }
     .auth-panel .btn { white-space: nowrap; }
     
-    .auth-welcome { white-space: nowrap; text-align: center; margin: 0 auto; width: 100%; }
+    .auth-welcome { white-space: nowrap; text-align: center; margin: 0 auto; width: 100%; font-size: 1.75rem; font-weight: 400; color: var(--text-muted); }
     @media (min-width: 481px) {
       .auth-welcome { transform: translateX(-15px); }
       [dir="rtl"] .auth-welcome { transform: translateX(15px); }
@@ -169,6 +169,10 @@
             <label>Password</label>
             <input type="password" required>
           </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" required>
+          </div>
           <div class="auth-options" style="justify-content: flex-start;">
             <label style="display: flex; align-items: center; gap: 0.5rem; white-space: normal;" dir="auto">
               <input type="checkbox" required> I agree to the <a href="#" style="color: var(--accent); margin-left: 0.25rem;">Terms & Conditions</a>
@@ -222,3 +226,6 @@
 </script>
 </body>
 </html>
+
+
+
