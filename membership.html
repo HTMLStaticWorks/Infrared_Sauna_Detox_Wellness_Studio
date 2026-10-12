@@ -10,17 +10,29 @@
   
   <style>
     .membership-hero {
-      position: relative; min-height: 70vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; margin-bottom: var(--spacing-xl);
+      position: relative;
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 2.75rem;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/membership.png') center/cover no-repeat;
     }
-    .membership-hero h1, .membership-hero p { color: #ffffff !important; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    .membership-hero h1, .membership-hero p {
+      color: #ffffff !important;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
     
+    /* Section Wrappers & Clean Spacing */
+    .pricing-section {
+      margin-bottom: 3.25rem;
+    }
+
     .pricing-table {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.25rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -47,16 +59,47 @@
     .plan-sessions { flex: 1; text-align: center; font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); }
     .plan-price { flex: 1; text-align: right; font-weight: 600; font-size: 1.25rem; }
 
+    /* Membership Benefits Section */
+    .benefits-section {
+      margin-bottom: 3.25rem;
+    }
+    .benefits-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .benefits-title h2 {
+      margin-bottom: 0;
+    }
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: var(--spacing-lg);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .benefit-item {
       padding: 2rem;
       background-color: var(--bg-secondary);
-      border-left: 2px solid var(--accent);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+      transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .benefit-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+    .benefit-item h4 {
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-size: 1.25rem;
+    }
+    .benefit-item p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* Modal Overlay (handled in interactions.js) */
@@ -85,15 +128,20 @@
       background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary);
     }
 
-    /* Corporate Section */
+    /* Corporate Section / Annual Memberships */
+    .corporate-section-wrapper {
+      margin-bottom: 3.5rem;
+    }
     .corporate-section {
       display: flex;
       background: var(--bg-secondary);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
       align-items: stretch;
       box-shadow: var(--shadow);
-      margin-top: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .corporate-image {
       flex: 1;
@@ -106,23 +154,32 @@
     }
     .corporate-content {
       flex: 1;
-      padding: 4rem;
+      padding: 3.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
+    [dir="rtl"] .plan-row:hover {
+      transform: translateX(-10px);
+    }
+    [dir="rtl"] .benefit-item {
+      border-left: 1px solid var(--border);
+      border-right: 4px solid var(--accent);
+    }
+
     @media (max-width: 768px) {
-      .plan-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .membership-hero { min-height: 50vh; margin-bottom: 2rem; }
+      .pricing-section { margin-bottom: 2.25rem; }
+      .benefits-section { margin-bottom: 2.25rem; }
+      .corporate-section-wrapper { margin-bottom: 2.5rem; }
+      .plan-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem; }
       .plan-sessions, .plan-price { text-align: left; }
-      .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .benefits-grid { grid-template-columns: 1fr; gap: 1rem; }
       .corporate-section { flex-direction: column; }
-      .corporate-image { width: 100%; min-height: 350px; }
+      .corporate-image { width: 100%; min-height: 300px; }
       .corporate-content { padding: 2rem; align-items: center; text-align: center; }
       .corporate-content li { justify-content: center; text-align: center; }
-    }
-    @media (max-width: 575px) {
-      .benefits-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -223,7 +280,8 @@
       </div>
     </section>
 
-    <section class="container fade-up">
+    <!-- Pricing Plans Section -->
+    <section class="container fade-up pricing-section">
       <div class="pricing-table">
         <div class="plan-row" data-plan="Essential">
           <div class="plan-info">
@@ -263,11 +321,12 @@
       </div>
     </section>
 
-    <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
-      <div class="text-center fade-up">
+    <!-- Membership Benefits Section -->
+    <section class="container fade-up benefits-section">
+      <div class="benefits-title">
         <h2>Membership Benefits</h2>
       </div>
-      <div class="benefits-grid fade-up">
+      <div class="benefits-grid">
         <div class="benefit-item">
           <h4>Session Tracking</h4>
           <p>Monitor your progress and history directly from your member dashboard.</p>
@@ -286,8 +345,10 @@
         </div>
       </div>
     </section>
-    <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
-      <div class="corporate-section fade-up">
+
+    <!-- Annual Memberships Section -->
+    <section class="container fade-up corporate-section-wrapper">
+      <div class="corporate-section">
         <div class="corporate-image">
           <img src="assets/images/Annual%20Memberships.png" alt="Annual Memberships">
         </div>
