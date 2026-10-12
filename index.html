@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUMORA WELLNESS | Infrared Sauna & Detox Wellness Studio</title>
-  <meta name="description" content="Restore Your Body. Reset Your Mind. A premium infrared sauna and detox wellness studio.">
+  <meta name="description"
+    content="Restore Your Body. Reset Your Mind. A premium infrared sauna and detox wellness studio.">
   <link rel="icon" type="image/svg+xml" href="favicon-dark.svg">
   <link rel="stylesheet" href="assets/css/style.css">
-  
+
   <style>
     /* Specific Home Page Styles */
     .hero-section {
@@ -18,18 +20,27 @@
       justify-content: center;
       overflow: hidden;
     }
+
     .hero-bg {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: -2;
     }
+
     .hero-overlay {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
       z-index: -1;
     }
+
     .hero-content {
       color: #fff;
       text-align: center;
@@ -37,6 +48,7 @@
       padding: 0 5%;
       z-index: 1;
     }
+
     .hero-eyebrow {
       font-family: var(--font-body);
       text-transform: uppercase;
@@ -44,24 +56,28 @@
       font-size: 0.875rem;
       margin-bottom: 1.5rem;
       color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     }
+
     .hero-title {
       font-size: clamp(3rem, 6vw, 5rem);
       margin-bottom: 1.5rem;
       color: #ffffff;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
     }
+
     .hero-text {
       font-size: clamp(1.1rem, 1.5vw, 1.25rem);
       margin-bottom: 2.5rem;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255, 255, 255, 0.9);
     }
+
     .hero-actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
     }
+
     .hero-actions .btn-outline:hover {
       background-color: #fff !important;
       color: #000 !important;
@@ -74,6 +90,7 @@
       gap: var(--spacing-md);
       margin-top: var(--spacing-lg);
     }
+
     .benefit-card {
       position: relative;
       overflow: hidden;
@@ -83,48 +100,87 @@
       align-items: flex-end;
       padding: var(--spacing-md);
     }
+
     .benefit-card img {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
       transition: transform var(--transition-slow);
     }
-    .benefit-card:hover img { transform: scale(1.05); }
-    .benefit-card .overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-      background: linear-gradient(to top, rgba(20,20,20,0.9), transparent);
+
+    .benefit-card:hover img {
+      transform: scale(1.05);
     }
+
+    .benefit-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(to top, rgba(20, 20, 20, 0.9), transparent);
+    }
+
     .benefit-content {
       color: #fff;
       z-index: 1;
     }
-    .benefit-content h3 { color: #fff; margin-bottom: 0.5rem; }
-    .benefit-content p { color: rgba(255,255,255,0.8); }
+
+    .benefit-content h3 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-content p {
+      color: rgba(255, 255, 255, 0.8);
+    }
 
     /* Signature Services - Layered Layout */
-    .services-wrapper { margin-top: var(--spacing-lg); }
+    .services-wrapper {
+      margin-top: var(--spacing-lg);
+    }
+
     .service-row {
       display: flex;
       align-items: center;
       gap: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
     }
-    .service-row:nth-child(even) { flex-direction: row-reverse; }
+
+    .service-row:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
     .service-img-wrapper {
       flex: 1;
       position: relative;
     }
+
     .service-img-wrapper::after {
       content: '';
-      position: absolute; top: 20px; left: -20px; right: 20px; bottom: -20px;
+      position: absolute;
+      top: 20px;
+      left: -20px;
+      right: 20px;
+      bottom: -20px;
       border: 1px solid var(--accent);
       z-index: -1;
     }
+
     .service-row:nth-child(even) .service-img-wrapper::after {
-      left: 20px; right: -20px;
+      left: 20px;
+      right: -20px;
     }
+
     .service-content {
       flex: 1;
       padding: var(--spacing-md);
     }
+
     .service-number {
       font-family: var(--font-heading);
       font-size: 3rem;
@@ -141,26 +197,44 @@
       margin: var(--spacing-lg) auto 0;
       padding-left: 50px;
     }
+
     .timeline::before {
       content: '';
-      position: absolute; top: 0; left: 15px; width: 1px; height: 100%;
+      position: absolute;
+      top: 0;
+      left: 15px;
+      width: 1px;
+      height: 100%;
       background: var(--border);
     }
+
     .timeline-item {
       position: relative;
       margin-bottom: var(--spacing-lg);
     }
+
     .timeline-item::before {
       content: '';
-      position: absolute; top: 5px; left: -40px; width: 10px; height: 10px;
+      position: absolute;
+      top: 5px;
+      left: -40px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 10px var(--accent);
     }
-    .timeline-item h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    .timeline-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
 
     /* Wellness Goals - Interactive */
-    .goals-section { background-color: var(--bg-secondary); }
+    .goals-section {
+      background-color: var(--bg-secondary);
+    }
+
     .goals-container {
       display: flex;
       flex-wrap: wrap;
@@ -168,6 +242,7 @@
       justify-content: center;
       margin: var(--spacing-md) 0;
     }
+
     .goal-btn {
       padding: 0.75rem 1.5rem;
       border: 1px solid var(--border);
@@ -178,11 +253,14 @@
       transition: all var(--transition-fast);
       font-family: var(--font-body);
     }
-    .goal-btn:hover, .goal-btn.active {
+
+    .goal-btn:hover,
+    .goal-btn.active {
       background: var(--accent);
       color: #fff;
       border-color: var(--accent);
     }
+
     .goal-result {
       max-width: 600px;
       margin: 0 auto;
@@ -193,81 +271,114 @@
       opacity: 0;
       transition: opacity var(--transition-normal);
     }
-    .goal-result.show { opacity: 1; }
+
+    .goal-result.show {
+      opacity: 1;
+    }
 
     /* Member Access */
     .member-access {
-      background-color: #141414; /* Deep charcoal */
+      background-color: #141414;
+      /* Deep charcoal */
       color: #fff;
       position: relative;
       overflow: hidden;
     }
-    .member-access h2 { color: #fff; }
-    .member-access p { color: rgba(255,255,255,0.7); }
+
+    .member-access h2 {
+      color: #fff;
+    }
+
+    .member-access p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
     .member-preview {
       margin-top: var(--spacing-lg);
       position: relative;
       perspective: 1000px;
     }
+
     .member-preview img {
       border-radius: var(--radius-md);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       transform: rotateX(5deg);
       transition: transform var(--transition-slow);
     }
+
     .member-preview:hover img {
       transform: rotateX(0deg);
     }
 
     @media (max-width: 768px) {
-      .hero-actions { flex-direction: column; align-items: center; }
-      .hero-actions .btn { width: 100%; max-width: 350px; }
-      .benefits-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .service-row { flex-direction: column !important; }
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .service-row {
+        flex-direction: column !important;
+      }
     }
+
     @media (max-width: 575px) {
-      .benefits-grid { grid-template-columns: 1fr; }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Global Navbar -->
   <nav class="navbar">
     <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" >
-  <defs>
-    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
-      <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
-    </linearGradient>
-  </defs>
-  
-  <!-- Outer Energy Rings -->
-  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
-  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8"/>
-  
-  <!-- Core Sun/Infrared Element -->
-  <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
-  
-  <!-- Minimalist Geometric Rays -->
-  <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-    <line x1="50" y1="12" x2="50" y2="20" />
-    <line x1="50" y1="80" x2="50" y2="88" />
-    <line x1="12" y1="50" x2="20" y2="50" />
-    <line x1="80" y1="50" x2="88" y2="50" />
-    
-    <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
-    <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
-    <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
-    <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
-  </g>
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
+            <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
+          </linearGradient>
+        </defs>
 
-  <!-- Central Glow / Inner Circle -->
-  <circle cx="50" cy="50" r="10" fill="url(#warmGradient)"/>
-</svg>
+        <!-- Outer Energy Rings -->
+        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6"
+          opacity="0.6" />
+        <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8" />
 
-      <span style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
+        <!-- Core Sun/Infrared Element -->
+        <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2" />
+
+        <!-- Minimalist Geometric Rays -->
+        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="50" y1="12" x2="50" y2="20" />
+          <line x1="50" y1="80" x2="50" y2="88" />
+          <line x1="12" y1="50" x2="20" y2="50" />
+          <line x1="80" y1="50" x2="88" y2="50" />
+
+          <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
+          <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
+          <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
+          <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
+        </g>
+
+        <!-- Central Glow / Inner Circle -->
+        <circle cx="50" cy="50" r="10" fill="url(#warmGradient)" />
+      </svg>
+
+      <span
+        style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.1em; font-weight: 600;">LUMORA</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
@@ -281,10 +392,26 @@
     </ul>
     <div class="nav-actions">
       <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
       </button>
       <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 3l4 4-4 4" />
+          <path d="M3 7h18" />
+          <path d="M7 21l-4-4 4-4" />
+          <path d="M21 17H3" />
+        </svg>
       </button>
       <a href="login.html" class="btn btn-outline">Login</a>
       <div class="hamburger">
@@ -309,10 +436,26 @@
 
     <div class="mobile-actions">
       <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
       </button>
       <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 3l4 4-4 4" />
+          <path d="M3 7h18" />
+          <path d="M7 21l-4-4 4-4" />
+          <path d="M21 17H3" />
+        </svg>
       </button>
     </div>
     <div class="mobile-cta">
@@ -326,14 +469,18 @@
       <img src="assets/images/generated/home_hero_sauna.jpg" alt="Luxury Infrared Sauna" class="hero-bg">
       <div class="hero-overlay"></div>
       <div class="heat-wave"></div>
-      
+
       <div class="hero-content fade-up">
         <div class="hero-eyebrow">Infrared Wellness Studio</div>
         <h1 class="hero-title">Restore Your Body.<br>Reset Your Mind.</h1>
-        <p class="hero-text">A modern wellness experience designed around warmth, recovery, relaxation and personalized self-care.</p>
+        <p class="hero-text">A modern wellness experience designed around warmth, recovery, relaxation and personalized
+          self-care.</p>
         <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary" style="min-width: 240px; text-align: center; box-sizing: border-box; white-space: nowrap;">Book Session</a>
-          <a href="services.html" class="btn btn-outline" style="color: #fff; border-color: #fff; min-width: 240px; text-align: center; box-sizing: border-box; white-space: nowrap;">Explore Services</a>
+          <a href="contact.html" class="btn btn-primary"
+            style="min-width: 240px; text-align: center; box-sizing: border-box; white-space: nowrap;">Book Session</a>
+          <a href="services.html" class="btn btn-outline"
+            style="color: #fff; border-color: #fff; min-width: 240px; text-align: center; box-sizing: border-box; white-space: nowrap;">Explore
+            Services</a>
         </div>
       </div>
     </section>
@@ -343,7 +490,7 @@
       <div class="text-center fade-up">
         <h2>Wellness, Powered by Warmth</h2>
       </div>
-      
+
       <div class="benefits-grid">
         <div class="benefit-card fade-up">
           <img src="assets/images/generated/home_benefit_relax.jpg" alt="Relaxation" loading="lazy">
@@ -353,7 +500,7 @@
             <p>Create a calm environment designed for deep relaxation.</p>
           </div>
         </div>
-        
+
         <div class="benefit-card fade-up">
           <img src="assets/images/generated/home_benefit_recover.jpg" alt="Recovery" loading="lazy">
           <div class="overlay"></div>
@@ -362,7 +509,7 @@
             <p>A restorative wellness experience after active days.</p>
           </div>
         </div>
-        
+
         <div class="benefit-card fade-up">
           <img src="assets/images/generated/home_benefit_circulate.jpg" alt="Circulation" loading="lazy">
           <div class="overlay"></div>
@@ -371,7 +518,7 @@
             <p>Gentle infrared warmth creates a deeply warming experience.</p>
           </div>
         </div>
-        
+
         <div class="benefit-card fade-up">
           <img src="assets/images/generated/home_benefit_mindful.jpg" alt="Mindful Reset" loading="lazy">
           <div class="overlay"></div>
@@ -388,7 +535,7 @@
       <div class="text-center fade-up" style="margin-bottom: var(--spacing-lg);">
         <h2>Signature Services</h2>
       </div>
-      
+
       <div class="services-wrapper">
         <div class="service-row fade-up">
           <div class="service-img-wrapper">
@@ -471,11 +618,12 @@
           <button class="goal-btn" data-goal="Self-Care">Self-Care</button>
           <button class="goal-btn" data-goal="Stress Reset">Stress Reset</button>
         </div>
-        
+
         <div class="goal-result show" id="goal-result">
           <h3 class="accent-text">Your Wellness Path: The Unwind Protocol</h3>
           <p>Recommended: 45 Min Infrared Sauna + 20 Min Red Light Therapy.</p>
-          <p style="font-size: 0.875rem; margin-top: 1rem;">Experience deep calming warmth designed to reduce tension and clear the mind.</p>
+          <p style="font-size: 0.875rem; margin-top: 1rem;">Experience deep calming warmth designed to reduce tension
+            and clear the mind.</p>
         </div>
       </div>
     </section>
@@ -484,9 +632,10 @@
     <section class="section-padding member-access">
       <div class="container fade-up text-center">
         <h2>Your Wellness Journey, All in One Place</h2>
-        <p style="max-width: 600px; margin: 0 auto 2rem;">Track sessions, membership usage, wellness goals and payment information from your personal dashboard.</p>
+        <p style="max-width: 600px; margin: 0 auto 2rem;">Track sessions, membership usage, wellness goals and payment
+          information from your personal dashboard.</p>
         <a href="login.html" class="btn btn-primary">Login to Dashboard</a>
-        
+
         <div class="member-preview fade-up">
           <img src="assets/images/generated/home_dashboard_preview.jpg" alt="Member Dashboard Preview" loading="lazy">
         </div>
@@ -498,16 +647,19 @@
       <div class="text-center fade-up" style="margin-bottom: var(--spacing-lg);">
         <h2>What Our Members Say</h2>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-        <div class="fade-up" style="background: var(--bg-secondary); padding: 2.5rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: stretch;">
+        <div class="fade-up"
+          style="background: var(--bg-secondary); padding: 2.5rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;">
           <p style="font-style: italic; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">"The infrared sauna sessions have completely transformed my recovery after intense workouts. The studio is impeccably clean and serene."</p>
           <h4 style="font-family: var(--font-heading); color: var(--text-primary); margin: 0;">— Sarah J.</h4>
         </div>
-        <div class="fade-up" style="background: var(--bg-secondary); padding: 2.5rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <div class="fade-up"
+          style="background: var(--bg-secondary); padding: 2.5rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;">
           <p style="font-style: italic; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">"A true sanctuary in the city. The red light therapy left my skin glowing, and the peaceful environment instantly melted my stress away."</p>
           <h4 style="font-family: var(--font-heading); color: var(--text-primary); margin: 0;">— Michael T.</h4>
         </div>
-        <div class="fade-up" style="background: var(--bg-secondary); padding: 2.5rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <div class="fade-up"
+          style="background: var(--bg-secondary); padding: 2.5rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;">
           <p style="font-style: italic; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">"The contrast suite is incredible. The combination of deep heat and the cold plunge has elevated my energy levels to new heights."</p>
           <h4 style="font-family: var(--font-heading); color: var(--text-primary); margin: 0;">— Emily R.</h4>
         </div>
@@ -518,7 +670,9 @@
     <section style="background-color: var(--accent); color: #fff; padding: 5rem 5%; text-align: center;">
       <div class="container fade-up">
         <h2 style="color: #fff; font-size: 3rem; margin-bottom: 1.5rem;">Ready to Restore Your Body?</h2>
-        <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Book your private wellness session today and experience the transformative power of infrared heat.</p>
+        <p
+          style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Book your private wellness session today and experience the transformative power of infrared heat.</p>
         <a href="contact.html" class="btn" style="background-color: #fff; color: var(--accent);">Book Your Session</a>
       </div>
     </section>
@@ -529,49 +683,60 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" >
-  <defs>
-    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
-      <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
-    </linearGradient>
-  </defs>
-  
-  <!-- Outer Energy Rings -->
-  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
-  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8"/>
-  
-  <!-- Core Sun/Infrared Element -->
-  <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
-  
-  <!-- Minimalist Geometric Rays -->
-  <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-    <line x1="50" y1="12" x2="50" y2="20" />
-    <line x1="50" y1="80" x2="50" y2="88" />
-    <line x1="12" y1="50" x2="20" y2="50" />
-    <line x1="80" y1="50" x2="88" y2="50" />
-    
-    <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
-    <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
-    <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
-    <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
-  </g>
+          <a href="index.html"
+            style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#D97757" /> <!-- Copper / Terracotta -->
+                  <stop offset="100%" stop-color="#E2A869" /> <!-- Amber -->
+                </linearGradient>
+              </defs>
 
-  <!-- Central Glow / Inner Circle -->
-  <circle cx="50" cy="50" r="10" fill="url(#warmGradient)"/>
-</svg>
+              <!-- Outer Energy Rings -->
+              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#warmGradient)" stroke-width="1.5"
+                stroke-dasharray="8 6" opacity="0.6" />
+              <circle cx="50" cy="50" r="38" fill="none" stroke="url(#warmGradient)" stroke-width="1" opacity="0.8" />
+
+              <!-- Core Sun/Infrared Element -->
+              <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2" />
+
+              <!-- Minimalist Geometric Rays -->
+              <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="50" y1="12" x2="50" y2="20" />
+                <line x1="50" y1="80" x2="50" y2="88" />
+                <line x1="12" y1="50" x2="20" y2="50" />
+                <line x1="80" y1="50" x2="88" y2="50" />
+
+                <line x1="23.1" y1="23.1" x2="28.8" y2="28.8" />
+                <line x1="71.2" y1="71.2" x2="76.9" y2="76.9" />
+                <line x1="23.1" y1="76.9" x2="28.8" y2="71.2" />
+                <line x1="71.2" y1="28.8" x2="76.9" y2="23.1" />
+              </g>
+
+              <!-- Central Glow / Inner Circle -->
+              <circle cx="50" cy="50" r="10" fill="url(#warmGradient)" />
+            </svg>
 
             <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600;">LUMORA</span>
           </a>
           <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Restore Your Body. Reset Your Mind.</p>
           <p style="font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-muted);">
-            Experience the transformative power of infrared heat. Detoxify, relax, and rejuvenate in our premium wellness studio.
+            Experience the transformative power of infrared heat. Detoxify, relax, and rejuvenate in our premium
+            wellness studio.
           </p>
           <div class="social-links">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-            <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
           </div>
         </div>
         <div class="footer-col">
@@ -600,13 +765,16 @@
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
-          <form style="display: flex; flex-direction: column; gap: 0.75rem;" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" placeholder="Enter your email" required style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-primary); font-family: inherit; width: 100%; box-sizing: border-box;">
-            <button type="submit" class="btn btn-primary" style="padding: 0.75rem; width: 100%; box-sizing: border-box;">Subscribe</button>
+          <form style="display: flex; flex-direction: column; gap: 0.75rem;"
+            onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email" required
+              style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-primary); font-family: inherit; width: 100%; box-sizing: border-box;">
+            <button type="submit" class="btn btn-primary"
+              style="padding: 0.75rem; width: 100%; box-sizing: border-box;">Subscribe</button>
           </form>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <p>&copy; 2026 Lumora Wellness Studio. All Rights Reserved.</p>
       </div>
@@ -632,7 +800,7 @@
         goalBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const data = goalsData[btn.dataset.goal];
-        
+
         resultBox.classList.remove('show');
         setTimeout(() => {
           resultBox.innerHTML = `
@@ -652,27 +820,28 @@
     style.innerHTML = `@keyframes fillProgress { to { width: 100%; } }`;
     document.head.appendChild(style);
   </script>
-<!-- Back to Top Button -->
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-</button>
-<script>
-  const backToTopBtn = document.getElementById('backToTop');
-  if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-</script>
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
 </body>
+
 </html>
-
-
-
