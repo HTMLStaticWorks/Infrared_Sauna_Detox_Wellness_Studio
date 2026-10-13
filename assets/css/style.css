@@ -69,7 +69,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.2;
   margin-bottom: var(--spacing-sm);
 }
@@ -81,6 +81,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
 p {
   margin-bottom: var(--spacing-sm);
   font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-weight: 400;
   color: var(--text-secondary);
 }
 

@@ -11,10 +11,12 @@
   <style>
     .membership-hero {
       position: relative;
-      min-height: 65vh;
+      min-height: 70vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 120px 5% 40px;
       text-align: center;
       margin-bottom: 2.75rem;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/membership.png') center/cover no-repeat;
@@ -23,6 +25,7 @@
       color: #ffffff !important;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
+    .membership-hero h1 { max-width: 100%; margin: 0 auto 1.5rem; }
     
     /* Section Wrappers & Clean Spacing */
     .pricing-section {
@@ -169,7 +172,7 @@
     }
 
     @media (max-width: 768px) {
-      .membership-hero { min-height: 50vh; margin-bottom: 2rem; }
+      .membership-hero { margin-bottom: 2rem; }
       .pricing-section { margin-bottom: 2.25rem; }
       .benefits-section { margin-bottom: 2.25rem; }
       .corporate-section-wrapper { margin-bottom: 2.5rem; }
@@ -274,9 +277,9 @@
 
   <main>
     <section class="membership-hero">
-      <div class="container fade-up" style="position: relative; z-index: 2;">
-        <h1 style="color: var(--text-primary);">Make Wellness a Ritual</h1>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.125rem;">Build a consistent wellness routine with flexible membership options.</p>
+      <div class="fade-up" style="position: relative; z-index: 2;">
+        <h1>Make Wellness a Ritual</h1>
+        <p style="max-width: 700px; margin: 0 auto; font-size: 1.125rem; line-height: 1.6;">Build a consistent wellness routine with flexible membership options.</p>
       </div>
     </section>
 
